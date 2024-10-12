@@ -93,7 +93,9 @@ bot.on("inline_query", (ctx) => handleErrors(ctx, async () => {
         InlineQueryResultBuilder.voice(voice._id.toString(), voice.title,
             voice.fileId, {
             voice_duration: voice.duration,
-            caption: `Uzunligi: ${voice.duration}s`,
+            caption: `O'z ovozlaringizni yarating 😊
+            
+Link: @kulamizbot`,
         })
     );
 

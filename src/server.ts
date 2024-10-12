@@ -18,6 +18,6 @@ app.listen(port, async () => {
         { command: "start", description: "Start the bot" },
         { command: "ovozlarim", description: "Ovozlarim" },
     ])
-    await bot.start();
     console.log(`Server started on port ${port}`);
+    await bot.start();
 })
