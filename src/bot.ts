@@ -1,9 +1,9 @@
 import { Bot, InlineQueryResultBuilder, session } from "grammy";
-import { BOT_TOKEN } from "./shared/configs";
-import { Voice } from "./models/voice.model";
-import { connectDB } from "./shared/database";
-import { MyContext, SessionData } from "./types";
-import { globalErrorCatcher, handleErrors } from "./shared/errors";
+import { BOT_TOKEN } from "./shared/configs/index.js";
+import { MyContext, SessionData } from "./types/index.js";
+import { globalErrorCatcher, handleErrors } from "./shared/errors/index.js";
+import { Voice } from "./models/voice.model.js";
+
 
 const botToken = BOT_TOKEN;
 if (!botToken) {
@@ -100,13 +100,3 @@ bot.on("inline_query", (ctx) => handleErrors(ctx, async () => {
     await ctx.answerInlineQuery(results);
 }));
 
-
-(async () => {
-    await connectDB();
-
-    await bot.api.setMyCommands([
-        { command: "start", description: "Start the bot" },
-        { command: "ovozlarim", description: "Ovozlarim" },
-    ])
-    await bot.start();
-})()

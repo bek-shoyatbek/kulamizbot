@@ -1,5 +1,5 @@
 import { BotError, GrammyError, HttpError } from "grammy";
-import { MyContext } from "../../types";
+import { MyContext } from "../../types/index.js";
 
 
 export async function handleErrors(ctx: MyContext, action: () => Promise<void>): Promise<void> {

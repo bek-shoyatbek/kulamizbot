@@ -1,9 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.globalErrorCatcher = void 0;
-exports.handleErrors = handleErrors;
-const grammy_1 = require("grammy");
-async function handleErrors(ctx, action) {
+import { GrammyError, HttpError } from "grammy";
+export async function handleErrors(ctx, action) {
     try {
         await action();
     }
@@ -12,18 +8,17 @@ async function handleErrors(ctx, action) {
         await ctx.reply("Hato sodir bo'ldi. Qayta urinib ko'ring.");
     }
 }
-const globalErrorCatcher = (err) => {
+export const globalErrorCatcher = (err) => {
     const ctx = err.ctx;
     console.error(`Error while handling update ${ctx.update.update_id}:`);
     const e = err.error;
-    if (e instanceof grammy_1.GrammyError) {
+    if (e instanceof GrammyError) {
         console.error("Error in request:", e.description);
     }
-    else if (e instanceof grammy_1.HttpError) {
+    else if (e instanceof HttpError) {
         console.error("Could not contact Telegram:", e);
     }
     else {
         console.error("Unknown error:", e);
     }
 };
-exports.globalErrorCatcher = globalErrorCatcher;

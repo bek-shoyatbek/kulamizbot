@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.MONGODB_URI = exports.BOT_TOKEN = void 0;
-require("dotenv/config");
-exports.BOT_TOKEN = process.env.BOT_TOKEN;
-exports.MONGODB_URI = process.env.MONGODB_URI;
+import "dotenv/config";
+export const BOT_TOKEN = process.env.BOT_TOKEN;
+export const MONGODB_URI = process.env.MONGODB_URI;
+export const APP_PORT = process.env.APP_PORT;
